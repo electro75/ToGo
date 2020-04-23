@@ -3,6 +3,7 @@ import './App.css';
 import AppBar from '@material-ui/core/AppBar';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import TimerBody from './timerBody/TimerBody';
 
 // this will be a smart component (aware of the state)
 // state will have the settings of the current timer
@@ -39,7 +40,11 @@ export default function App() {
                         ToGo
                     </Typography>             
                 </AppBar>
+                <div>
+                    <TimerBody />
+                </div>
             </div>
+            
         )
     
 }
