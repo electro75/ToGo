@@ -1,4 +1,5 @@
 import React from 'react';
+import './DisplayTimer.css';
 
 const intervals = [
     {interval : 'week', unit : 7 * 24 * 60 * 60},
@@ -30,13 +31,11 @@ function getDifference(eventTime) {
     return newDiffArr
 }
 
-function getDiffStr(arr) {
-    // console.log(arr);
-    let str = ``;
-    arr.forEach(interval => {
-        // console.log(interval)
-        str = `${str} ` + ((interval.diff > 1 ) ? `${interval.diff} ${interval.interval}s` :
-                (interval.diff === 1) ? `${interval.diff} ${interval.interval}` : ``);                
+function getDiffStr(arr) {    
+    let str = [];
+    arr.forEach(interval => {        
+        str.push(<li key={interval.interval} >{((interval.diff > 1 ) ? `${interval.diff} ${interval.interval}s` :
+                (interval.diff === 1) ? `${interval.diff} ${interval.interval}` : ``)}</li>)
     })
 
     return str;
@@ -48,18 +47,25 @@ const DisplayTimer = (props) => {
         return (
             <div>No Event Added!</div>
         )
-    } else {        
-        let diffStr = '';
+    } else if (props.eventTime - props.currentTime <= 0){
+        clearInterval(props.timer);
+        return(
+            <div>{props.eventName} is here!</div>
+        )
+
+    } else  {        
+        let diffStr = '';        
         let d1 = props.currentTime
         let diff = (props.eventTime) - d1        
-        diffStr = getDiffStr(getDifference(diff));
-
-        setInterval(function() {
-            props.incTime();
-        }, 1000)            
+        diffStr = getDiffStr(getDifference(diff));                
 
         return (
-            <div>{diffStr}</div>
+            <div className='display-timer' >
+                <ul className='time-list' >
+                    {diffStr.map(str => str)}
+                </ul>
+                <p> to go for {props.eventName}!!</p>
+            </div>
         )
         
     }

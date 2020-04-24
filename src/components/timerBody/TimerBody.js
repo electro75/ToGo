@@ -10,17 +10,20 @@ class TimerBody extends React.Component {
 
         this.state = {
             eventTime : 1588809600,
-            eventName : '25th Bday.', 
-            currentTime : new Date().getTime() / 1000                       
+            eventName : '25th Bday', 
+            currentTime : new Date().getTime() / 1000,
+            timer : setInterval(()=> {
+                this.incCurrentTime()
+            }, 1000)                                
         }        
-    }
+    }    
+    
 
     incCurrentTime = () => {        
         this.setState({            
             currentTime: new Date().getTime() / 1000
         })
     }
-    
 
     render() {
         return (
@@ -29,7 +32,7 @@ class TimerBody extends React.Component {
                     eventTime = {this.state.eventTime} 
                     eventName = {this.state.eventName}
                     currentTime = {this.state.currentTime}
-                    incTime = {this.incCurrentTime}/>
+                    timer = {this.state.timer}/>
                 <AddTimer />
             </div>
         )
