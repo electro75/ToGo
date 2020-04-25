@@ -1,11 +1,16 @@
 .timer-body {
-    height : 80vh;
+    height : 50vh;
+    /* display: flex;     */
+}
+
+.timer-display {
+    height: 100%;
     display: flex;
     justify-content: center;    
     align-items: center;
     flex-direction: column;
     position: relative;
-    
+    padding: 10px;
 }
 
 .timer-data {
@@ -24,4 +29,11 @@
     z-index: 1;
     /* background-color: blue; */
     position: absolute;
+}
+
+.timer-config {        
+    align-self: flex-start;
+    padding : 20px;
+    display: flex;
+    flex-direction: row-reverse;
 }
