@@ -19,7 +19,7 @@
 }
 
 .progress-bar {
-    height: 50vh;
+    /* height: 50vh; */
     /* width: 100px; */
     z-index: 1;
     /* background-color: blue; */

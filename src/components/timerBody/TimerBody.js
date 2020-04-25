@@ -11,7 +11,7 @@ class TimerBody extends React.Component {
         super(props);
 
         this.state = {
-            eventTime : 1587732780,
+            eventTime : 1588809600,
             eventName : '25th Bday', 
             currentTime : new Date().getTime() / 1000,
             createdAt : 1587732691,            
