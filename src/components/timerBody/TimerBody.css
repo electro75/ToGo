@@ -1,6 +1,9 @@
 .timer-body {
-    height : 50vh;
-    /* display: flex;     */
+    min-height : 70vh;
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+    padding: 10px;
 }
 
 .timer-display {
@@ -13,27 +16,46 @@
     padding: 10px;
 }
 
-.timer-data {
-    /* height : 40vh; */
-    /* background-color: aquamarine; */
+.timer-data {    
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    z-index: 2;
+    flex-direction: column;    
 }
 
-.progress-bar {
-    /* height: 50vh; */
-    /* width: 100px; */
-    z-index: 1;
-    /* background-color: blue; */
+.progress-bar {    
     position: absolute;
 }
 
 .timer-config {        
-    align-self: flex-start;
+    justify-self: end;
+    align-self: start;
     padding : 20px;
     display: flex;
     flex-direction: row-reverse;
+}
+
+.timer-card-container {    
+    height : 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width : 80%;
+    flex-wrap: wrap;
+}
+
+.timer-card {
+    min-width: 35%;
+    min-height: 90%;  
+    margin: 10px;  
+}
+
+.card-actions {
+    display: flex;
+    align-items: flex-end;
+    height: 80%;
+}
+
+.card-content {
+    height: 55vh;
 }

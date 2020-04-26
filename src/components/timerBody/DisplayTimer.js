@@ -64,7 +64,7 @@ const DisplayTimer = (props) => {
                 <ul className='time-list' >
                     {diffStr.map(str => str)}
                 </ul>
-                <p> to go for {props.eventName}!!</p>
+                <p> to go!!</p>
             </div>
         )
         

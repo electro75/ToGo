@@ -3,6 +3,11 @@ import TimerConfig from './TimerConfig';
 import DisplayTimer from './DisplayTimer';
 import ShowProgress from './ShowProgress';
 import './TimerBody.css'
+import Paper from '@material-ui/core/Paper';
+// import { CardContent, CardActions } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 class TimerBody extends React.Component {
 
@@ -36,31 +41,40 @@ class TimerBody extends React.Component {
 
     render() {
         return (
-            <div className="timer-body" >
+            <div className="timer-body" >                
+                <div className = "timer-card-container" >
+                    <Paper className="timer-card" elevation={3} >
+                        <div className="card-content" >                            
+                            <div className = "timer-display" >
+                                <div className="timer-data" >
+                                    <DisplayTimer  
+                                        eventTime = {this.state.eventTime} 
+                                        eventName = {this.state.eventName}
+                                        currentTime = {this.state.currentTime}
+                                        timer = {this.state.timer}/>                       
+                                </div>   
+                                <div className="progress-bar" > 
+                                    <ShowProgress 
+                                        currentTime = {this.state.currentTime}
+                                        eventTime = {this.state.eventTime}
+                                        createdAt = {this.state.createdAt}  />                   
+                                </div>
+                            </div>                             
+                        </div>                        
+                        <div className="card-actions" >                            
+                            <Button>
+                                <DeleteIcon/>
+                            </Button>                            
+                        </div>                        
+                    </Paper>                    
+                </div>
                 <div className="timer-config" >
                     <div>
                         <TimerConfig 
                             eventTime = {this.state.eventTime}
-                            selectEvent = {this.selectEvent}
-                        />
+                            selectEvent = {this.selectEvent} />
                     </div>                    
-                </div>
-                <div className = "timer-display" >
-                    <div className="timer-data" >
-                        <DisplayTimer  
-                            eventTime = {this.state.eventTime} 
-                            eventName = {this.state.eventName}
-                            currentTime = {this.state.currentTime}
-                            timer = {this.state.timer}/>                       
-                    </div>   
-                    <div className="progress-bar" > 
-                        <ShowProgress 
-                            currentTime = {this.state.currentTime}
-                            eventTime = {this.state.eventTime}
-                            createdAt = {this.state.createdAt}  />                   
-                    </div>
-                </div>                
-                
+                </div>            
             </div>
         )
     }
