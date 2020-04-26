@@ -1,0 +1,15 @@
+.timer-body {
+    height: 90vh;
+    display: flex;
+}
+
+.timer-container {
+    width : 75%;
+    height: 100%;
+    padding : 10px;
+}
+
+.timer-config {
+    width : 25%;
+    padding: 10px;
+}
