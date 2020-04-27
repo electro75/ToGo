@@ -24,13 +24,14 @@ let newEvent = {
 
 const TimerConfig = (props) => {
 
-    const [selectedDate, handleDateChange] = useState(new Date());    
+    const [selectedDate, handleDateChange] = useState(new Date());
+    const [btnDisabled, setBtnDisabled] = useState(true) 
 
-    const classes = useStyles();
+    const classes = useStyles();    
 
     const makeEvent = () => {        
-        newEvent.timestamp = selectedDate.valueOf() / 1000        
-        props.addTimer(newEvent);
+        newEvent.timestamp = Math.trunc(selectedDate.valueOf() / 1000)        
+        props.addTimer({...newEvent, createdAt : new Date().getTime() / 1000});
     }
 
     return (
@@ -45,13 +46,18 @@ const TimerConfig = (props) => {
                 />
                 <TextField 
                     label="Event Name"
-                    onChange={(n)=> {newEvent.name = n.target.value}  } 
+                    onChange={(n)=> {
+                        newEvent.name = n.target.value; 
+                        setBtnDisabled(!n.target.value)                       
+                    }} 
                     />
                 <Button 
                     variant="contained" 
                     color="primary"
-                    onClick={()=> { makeEvent() } }>
-                    
+                    size="small"
+                    onClick={()=> { makeEvent() } }
+                    disableElevation={true}
+                    disabled = { btnDisabled }>                    
                     Add Event
                 </Button>
             </div>
