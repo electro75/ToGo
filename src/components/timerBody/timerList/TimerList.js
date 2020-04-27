@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Paper} from '@material-ui/core';
 import './TimerList.css';
+import TimerDisplay from './TimerDisplay/TimerDisplay';
 
 class TimerList extends React.Component {
 
@@ -13,7 +14,7 @@ class TimerList extends React.Component {
                 key={timer.name}                           
                 square={false}
                 elevation={2} >
-                   {timer.name}
+                   <TimerDisplay timer={timer} />
             </Paper>
             )
         })

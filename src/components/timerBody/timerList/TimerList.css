@@ -1,8 +1,10 @@
 .timer-paper {
     width : 20%;
-    height: 35vh
+    height: 35vh;
+    margin : 5px;
 }
 
 .paper-container {
     display: flex;
+    flex-wrap: wrap;    
 }
