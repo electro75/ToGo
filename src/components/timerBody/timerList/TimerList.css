@@ -1,0 +1,8 @@
+.timer-paper {
+    width : 20%;
+    height: 35vh
+}
+
+.paper-container {
+    display: flex;
+}

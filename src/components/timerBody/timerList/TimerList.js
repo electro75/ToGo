@@ -1,20 +1,36 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {Paper} from '@material-ui/core';
+import './TimerList.css';
 
 class TimerList extends React.Component {
 
-    render() {
-        console.log(this.props.timers)
+    renderList() {        
+        return this.props.timers.map(timer => {            
+            return(
+            <Paper
+                className = "timer-paper"
+                key={timer.name}                           
+                square={false}
+                elevation={2} >
+                   {timer.name}
+            </Paper>
+            )
+        })
+    }
+    
+    render() {                
+
         if(!this.props.timers.length) {
             return (
                 <div>Timers will appear here!</div>
             )
-        } else {
-            return this.props.timers.map(timer => {
-                return (
-                <div key={timer.name} >{timer.name}</div>
-                )
-            })
+        } else {            
+            return (                    
+                <div className ="paper-container" >
+                    {this.renderList()}
+                </div>
+            )            
         }
         
     }
