@@ -64,7 +64,7 @@ const ShowCount = (props) => {
                 <ul className='time-list' >
                     {diffStr.map(str => str)}
                 </ul>
-                <p> to go!!</p>
+                <p> to go for {props.eventName}</p>
             </div>
         )
         

@@ -3,8 +3,14 @@
 }
 
 .timer-data {
-    height : 85%;
+    height : 80%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.timer-actions {
+    padding : 5px;
+    display: flex;
+    justify-content: center;
 }

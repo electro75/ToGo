@@ -1,7 +1,8 @@
 import React from 'react';
 import './TimerDisplay.css';
-import './TimerData/TimerData';
+import Button from '@material-ui/core/Button';
 import TimerData from './TimerData/TimerData';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 class TimerDisplay extends React.Component {
 
@@ -12,7 +13,13 @@ class TimerDisplay extends React.Component {
                 <TimerData timer = {this.props.timer}/>
             </div>
             <div className="timer-actions" >
-
+            <Button
+                variant="contained"
+                color="secondary"
+                size="small"        
+                startIcon={<DeleteIcon />}>
+                Delete
+            </Button>
             </div>
         </div>)
     }

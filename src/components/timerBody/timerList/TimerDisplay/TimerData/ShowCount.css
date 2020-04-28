@@ -1,6 +1,9 @@
-  
 .time-list {
     list-style: none;
     padding : 0px;
     text-align: center;    
+}
+
+.display-timer {
+    font-size: 12px;
 }

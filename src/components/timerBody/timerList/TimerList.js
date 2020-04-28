@@ -13,7 +13,7 @@ class TimerList extends React.Component {
                 className = "timer-paper"
                 key={timer.name}                           
                 square={false}
-                elevation={2} >
+                elevation={4} >
                    <TimerDisplay timer={timer} />
             </Paper>
             )

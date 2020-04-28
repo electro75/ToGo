@@ -1,0 +1,12 @@
+.timer-display {
+    position: relative;
+}
+
+.progress-bar {
+    position: absolute;
+    z-index: 1;
+}
+
+.show-count {
+    z-index : 2
+}
