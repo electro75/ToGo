@@ -1,0 +1,10 @@
+.timer-display {
+    height : 100%;
+}
+
+.timer-data {
+    height : 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

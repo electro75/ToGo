@@ -4,7 +4,11 @@ const timerReducer = (timers=[], action) => {
     if(action.type === "ADD_TIMER") {
         return [...timers, action.payload]
     } else {
-        return timers
+        return [{
+            name : '25th bday',
+            timestamp : 1588809600,
+            createdAt : 1588055104
+        }]
     }
 }
 
