@@ -3,6 +3,8 @@ import './TimerDisplay.css';
 import Button from '@material-ui/core/Button';
 import TimerData from './TimerData/TimerData';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { connect } from 'react-redux';
+import {removeTimer} from  '../../../../actions';
 
 class TimerDisplay extends React.Component {
 
@@ -17,6 +19,7 @@ class TimerDisplay extends React.Component {
                 variant="contained"
                 color="secondary"
                 size="small"        
+                onClick = {() => this.props.removeTimer(this.props.timer)}
                 startIcon={<DeleteIcon />}>
                 Delete
             </Button>
@@ -26,4 +29,8 @@ class TimerDisplay extends React.Component {
 
 }
 
-export default TimerDisplay
+function mapStateToProps(state) {
+    return state
+}
+
+export default  connect(mapStateToProps, {removeTimer})(TimerDisplay) 
