@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import {connect} from 'react-redux';
 import { addTimer } from '../../../actions';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles((theme) => ({
     configBody : {
@@ -37,7 +39,15 @@ const TimerConfig = (props) => {
     return (
         <MuiPickersUtilsProvider utils ={MomentUtils}>
             <div className={classes.configBody} >
-                <DateTimePicker
+            <Fab 
+                color="primary" 
+                aria-label="add"
+                variant = 'extended'
+                size ="large">
+                <AddIcon />
+                Add Timer
+            </Fab>
+                {/* <DateTimePicker
                     label="Add Event"
                     inputVariant="outlined"
                     value={selectedDate}
@@ -59,7 +69,7 @@ const TimerConfig = (props) => {
                     disableElevation={true}
                     disabled = { btnDisabled }>                    
                     Add Event
-                </Button>
+                </Button> */}
             </div>
         </MuiPickersUtilsProvider>        
     )
