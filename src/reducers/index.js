@@ -12,8 +12,8 @@ const timerReducer = (timers=[], action) => {
     }
     else {
         return [{
-            name : '25th bday',
-            timestamp : 1588809600,
+            name : 'End of 2020',
+            timestamp : 1609459200,
             createdAt : 1588055104
         }]
     }

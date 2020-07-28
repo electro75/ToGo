@@ -9,6 +9,8 @@ import {connect} from 'react-redux';
 import { addTimer } from '../../../actions';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
 
 const useStyles = makeStyles((theme) => ({
     configBody : {
@@ -24,30 +26,26 @@ let newEvent = {
     timestamp : new Date().getTime()
 }
 
-const TimerConfig = (props) => {
+const EventDialog = (props) => {
 
+    const { onClose, open } = props;
+    const [btnDisabled, setBtnDisabled] = useState(true);
     const [selectedDate, handleDateChange] = useState(new Date());
-    const [btnDisabled, setBtnDisabled] = useState(true) 
 
-    const classes = useStyles();    
+    const handleClose = () => {
+        onClose();
+    };
 
     const makeEvent = () => {        
         newEvent.timestamp = Math.trunc(selectedDate.valueOf() / 1000)        
         props.addTimer({...newEvent, createdAt : new Date().getTime() / 1000});
+        handleClose();
     }
 
     return (
-        <MuiPickersUtilsProvider utils ={MomentUtils}>
-            <div className={classes.configBody} >
-            <Fab 
-                color="primary" 
-                aria-label="add"
-                variant = 'extended'
-                size ="large">
-                <AddIcon />
-                Add Timer
-            </Fab>
-                {/* <DateTimePicker
+        <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+            <DialogTitle id="simple-dialog-title">Add Event</DialogTitle>
+            <DateTimePicker
                     label="Add Event"
                     inputVariant="outlined"
                     value={selectedDate}
@@ -69,14 +67,45 @@ const TimerConfig = (props) => {
                     disableElevation={true}
                     disabled = { btnDisabled }>                    
                     Add Event
-                </Button> */}
+                </Button>
+        </Dialog>
+    )
+}
+
+const TimerConfig = (props) => {
+
+    
+    const [open, setOpen] = React.useState(false);    
+    const classes = useStyles();        
+
+    const handleClickOpen = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = () => {
+        setOpen(false);        
+      }
+
+    return (
+        <MuiPickersUtilsProvider utils ={MomentUtils}>
+            <div className={classes.configBody} >
+            <Fab 
+                onClick={handleClickOpen}
+                color="primary" 
+                aria-label="add"
+                variant = 'extended'
+                size ="large">
+                <AddIcon />
+                Add Timer
+            </Fab>
+            <EventDialog open={open} onClose = {handleClose} addTimer={props.addTimer} />
+                
             </div>
         </MuiPickersUtilsProvider>        
     )
 }
 
-const mapStateToProps = (state) => {
-    console.log(state);
+const mapStateToProps = (state) => {    
     return state
 }
 
