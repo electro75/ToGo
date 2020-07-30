@@ -10,6 +10,8 @@ import { addTimer } from '../../../actions';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogActions from '@material-ui/core/DialogActions';
 import Dialog from '@material-ui/core/Dialog';
 
 const useStyles = makeStyles((theme) => ({
@@ -17,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
         display : 'flex',
         flexDirection : 'column',
         justifyContent : 'space-evenly',
-        height : '100%'
-    }
+        height : '30vh'
+    }    
 }));
 
 let newEvent = {
@@ -31,6 +33,7 @@ const EventDialog = (props) => {
     const { onClose, open } = props;
     const [btnDisabled, setBtnDisabled] = useState(true);
     const [selectedDate, handleDateChange] = useState(new Date());
+    const classes = useStyles();  
 
     const handleClose = () => {
         onClose();
@@ -45,20 +48,23 @@ const EventDialog = (props) => {
     return (
         <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
             <DialogTitle id="simple-dialog-title">Add Event</DialogTitle>
-            <DateTimePicker
-                    label="Add Event"
-                    inputVariant="outlined"
-                    value={selectedDate}
-                    onChange={handleDateChange}
-                    disablePast
-                />
+            <DialogContent className={classes.configBody} >
+                <DateTimePicker
+                        label="Add Event"
+                        inputVariant="outlined"
+                        value={selectedDate}
+                        onChange={handleDateChange}
+                        disablePast
+                    />
                 <TextField 
                     label="Event Name"
                     onChange={(n)=> {
                         newEvent.name = n.target.value; 
                         setBtnDisabled(!n.target.value)                       
                     }} 
-                    />
+                />
+            </DialogContent>
+            <DialogActions>
                 <Button 
                     variant="contained" 
                     color="primary"
@@ -68,6 +74,8 @@ const EventDialog = (props) => {
                     disabled = { btnDisabled }>                    
                     Add Event
                 </Button>
+            </DialogActions>
+                
         </Dialog>
     )
 }
@@ -75,8 +83,7 @@ const EventDialog = (props) => {
 const TimerConfig = (props) => {
 
     
-    const [open, setOpen] = React.useState(false);    
-    const classes = useStyles();        
+    const [open, setOpen] = React.useState(false);            
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -88,7 +95,7 @@ const TimerConfig = (props) => {
 
     return (
         <MuiPickersUtilsProvider utils ={MomentUtils}>
-            <div className={classes.configBody} >
+            <div>
             <Fab 
                 onClick={handleClickOpen}
                 color="primary" 
